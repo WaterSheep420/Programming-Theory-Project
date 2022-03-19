@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Transform groundCheck;
     private Rigidbody2D rb;
 
     private float horizontalInput;
-    private bool canJump = true;
     private bool jumpKeyPressed;
 
+    [SerializeField] private LayerMask layerMask;
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
+
+    [SerializeField] private Vector2 groundCheckBoxSize = new Vector2(0.5f, 0.1f);
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +26,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInput();
-        if (jumpKeyPressed && canJump)
+
+        if (jumpKeyPressed && Canjump())
             Jump();
     }
     private void FixedUpdate()
@@ -41,7 +45,11 @@ public class PlayerController : MonoBehaviour
     }
     void Jump()
     {
-        //canJump = false;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+    private bool Canjump()
+    {
+        bool _canJump = Physics2D.OverlapBox(groundCheck.position, groundCheckBoxSize, 0, layerMask);
+        return _canJump;
     }
 }
