@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public SceneLoader Instance { get; private set; }
-
+    public static SceneLoader Instance { get; private set; }
+    public Vector3 MainCameraPosition { get; private set; }
     private void Awake()
     {
         if (Instance != null)
@@ -17,7 +17,17 @@ public class SceneLoader : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        Debug.Log("looks like it's null");
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadScene();
+        }
+    }
+    public void ReloadScene()
+    {
+        MainCameraPosition = Camera.main.transform.position;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
