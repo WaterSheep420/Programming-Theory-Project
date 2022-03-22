@@ -52,4 +52,8 @@ public class PlayerController : MonoBehaviour
         bool _canJump = Physics2D.OverlapBox(groundCheck.position, groundCheckBoxSize, 0, layerMask);
         return _canJump;
     }
+    public void KnockBack()
+    {
+        
+    }
 }

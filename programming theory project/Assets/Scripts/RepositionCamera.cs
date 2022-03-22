@@ -1,12 +1,11 @@
 using UnityEngine;
 
-public class CameraPosition : MonoBehaviour
+public class RepositionCamera : MonoBehaviour
 {
     private void Awake()
     {
         if (SceneLoader.Instance != null)
         {
-
             transform.position = SceneLoader.Instance.MainCameraPosition;
         }
     }

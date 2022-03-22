@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
             Die();
         }
     }
-    public void Die()
+    public virtual void Die()
     {
         Destroy(gameObject);
     }

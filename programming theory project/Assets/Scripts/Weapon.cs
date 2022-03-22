@@ -3,10 +3,11 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private int weaponDamage;
+    [SerializeField] private float range;
 
     [SerializeField] private Transform firePoint;
     [SerializeField] private LineRenderer laserSight;
-    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask ignoreRaycast;
     [SerializeField] private string enemyTag;
 
     RaycastHit2D hit;
@@ -21,7 +22,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hit = Physics2D.Raycast(firePoint.position, firePoint.right, 50f, ~playerLayer);
+        hit = Physics2D.Raycast(firePoint.position, firePoint.right, range, ~ignoreRaycast);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             Shoot();
@@ -35,10 +36,14 @@ public class Weapon : MonoBehaviour
     }
     private void LateUpdate()
     {
+        SetupLaserSight();
+    }
+    void SetupLaserSight()
+    {
         if (hit)
             raycastEnd = hit.point;
         else
-            raycastEnd = firePoint.position + firePoint.right * 50;
+            raycastEnd = firePoint.position + firePoint.right * range;
 
         laserSight.SetPosition(0, firePoint.position);
         laserSight.SetPosition(1, raycastEnd);

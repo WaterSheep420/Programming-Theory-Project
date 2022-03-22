@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            SceneLoader.Instance.ReloadScene();
+            collision.gameObject.GetComponent<Health>().TakeDamage(5);
         }
     }
 }

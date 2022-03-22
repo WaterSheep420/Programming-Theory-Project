@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Follow : MonoBehaviour
@@ -6,7 +5,7 @@ public class Follow : MonoBehaviour
     [SerializeField] private Transform target;
 
     [SerializeField] private float smoothSpeed = 10f;
-    [SerializeField] private Vector3 offset;
+    public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
 
     private void LateUpdate()
