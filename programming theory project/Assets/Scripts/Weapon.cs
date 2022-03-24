@@ -32,7 +32,7 @@ public class Weapon : MonoBehaviour
         if (!hit)
             return;
         if (hit.transform.CompareTag(enemyTag))
-            hit.transform.gameObject.GetComponent<Health>().TakeDamage(weaponDamage);
+            Debug.Log("enemy hit");
     }
     private void LateUpdate()
     {

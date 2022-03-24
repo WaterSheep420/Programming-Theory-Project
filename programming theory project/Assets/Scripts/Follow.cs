@@ -20,4 +20,8 @@ public class Follow : MonoBehaviour
 
         transform.position = smoothedPosition;
     }
+    public void SwitchTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
 }

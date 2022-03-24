@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ChangeCameraFollow : MonoBehaviour
 {
+    [SerializeField] private Transform newTarget;
+
     [SerializeField] private Vector3 newOffset;
     [SerializeField] private float delay;
 
@@ -18,5 +20,7 @@ public class ChangeCameraFollow : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         followScript.offset = newOffset;
+        if (newTarget != null)
+            followScript.SwitchTarget(newTarget);
     }
 }
