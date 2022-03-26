@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -37,7 +35,7 @@ public class PlayerController : MonoBehaviour
     void HandleInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
-        jumpKeyPressed = Input.GetKeyDown(KeyCode.Space);
+        jumpKeyPressed = Input.GetButtonDown("Jump");
     }
     void MovePlayer()
     {
@@ -51,9 +49,5 @@ public class PlayerController : MonoBehaviour
     {
         bool _canJump = Physics2D.OverlapBox(groundCheck.position, groundCheckBoxSize, 0, layerMask);
         return _canJump;
-    }
-    public void KnockBack()
-    {
-        
     }
 }

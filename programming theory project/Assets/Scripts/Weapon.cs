@@ -6,12 +6,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float range;
 
     [SerializeField] private Transform firePoint;
-    [SerializeField] private LineRenderer laserSight;
     [SerializeField] private LayerMask ignoreRaycast;
     [SerializeField] private string enemyTag;
 
     RaycastHit2D hit;
-    Vector3 raycastEnd;
 
     // Start is called before the first frame update
     void Start()
@@ -33,19 +31,5 @@ public class Weapon : MonoBehaviour
             return;
         if (hit.transform.CompareTag(enemyTag))
             Debug.Log("enemy hit");
-    }
-    private void LateUpdate()
-    {
-        SetupLaserSight();
-    }
-    void SetupLaserSight()
-    {
-        if (hit)
-            raycastEnd = hit.point;
-        else
-            raycastEnd = firePoint.position + firePoint.right * range;
-
-        laserSight.SetPosition(0, firePoint.position);
-        laserSight.SetPosition(1, raycastEnd);
     }
 }
