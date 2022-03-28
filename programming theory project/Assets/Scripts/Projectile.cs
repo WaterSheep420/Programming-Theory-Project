@@ -3,11 +3,15 @@ using System.Collections;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private string targetTag;
+    [SerializeField] private string ignoreTag;
+
     [SerializeField] private float speed;
     [SerializeField] private float lifeTime;
+    [SerializeField] private int damage;
     private void Awake()
     {
-        StartCoroutine(Destroy());
+        StartCoroutine(SelfDestruct());
     }
     private void Update()
     {
@@ -15,9 +19,15 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.CompareTag(targetTag))
+        {
+            Health health = collision.GetComponent<Health>();
+            health.Damage(damage);
+        }
+        if(!collision.CompareTag(ignoreTag))
+            Destroy(gameObject);
     }
-    IEnumerator Destroy()
+    IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(lifeTime);
         Destroy(gameObject);
