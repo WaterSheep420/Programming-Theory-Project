@@ -4,7 +4,6 @@ using System.Collections;
 public class ChangeCameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform newTarget;
-    [SerializeField] private GameObject toggleTrigger;
 
     [SerializeField] private Vector3 newOffset;
     [SerializeField] private float delay;
@@ -12,14 +11,9 @@ public class ChangeCameraFollow : MonoBehaviour
     [SerializeField] private Follow followScript;
 
     private BoxCollider2D area;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         StartCoroutine(ShiftCamera());
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        ToggleTrigger();
     }
     IEnumerator ShiftCamera()
     {
@@ -29,18 +23,6 @@ public class ChangeCameraFollow : MonoBehaviour
 
         if (newTarget != null)
             followScript.SwitchTarget(newTarget);
-    }
-    void ToggleTrigger()
-    {
-        if (toggleTrigger != null)
-        {
-            if (toggleTrigger.activeSelf)
-                toggleTrigger.SetActive(false);
-            else
-                toggleTrigger.SetActive(true);
-
-            gameObject.SetActive(false);
-        }
     }
     private void OnDrawGizmos()
     {

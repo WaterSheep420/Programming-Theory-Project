@@ -13,10 +13,11 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
+        //abstraction
         HandleTimer();
         FindTarget();
     }
-    void HandleTimer()
+    protected virtual void HandleTimer()
     {
         timer += Time.deltaTime;
         if (timer > 1 / fireRate)

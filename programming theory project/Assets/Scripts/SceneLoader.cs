@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    //encapsulation
     public static SceneLoader Instance { get; private set; }
     public Vector3 MainCameraPosition { get; private set; }
     private void Awake()

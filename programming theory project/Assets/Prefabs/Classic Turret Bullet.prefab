@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4126919518078153706}
   m_Layer: 0
   m_Name: Classic Turret Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,10 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394eac57ed887c043b9e53cb14775fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selfDestructParticles: {fileID: 1033141116347808366, guid: fc97dbb49c596164eb564f2c9c0bffd6, type: 3}
+  hitParticles: {fileID: 551325224293193435, guid: 75be12070a8fa47418acb8b64a449c3b, type: 3}
   targetTag: Player
   ignoreTag: Enemy
   speed: 0.1
-  lifeTime: 10
+  lifeTime: 2
   damage: 1
 --- !u!61 &4071493907629131588
 BoxCollider2D:
