@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] protected string deathSound;
+
     [SerializeField] private int maxHealth;
     private int currentHealth;
 
@@ -18,6 +20,8 @@ public class Health : MonoBehaviour
     }
     protected virtual void Die()
     {
+        AudioManager.Instance.Play(deathSound);
+
         Destroy(gameObject);
     }
 }

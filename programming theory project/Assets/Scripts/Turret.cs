@@ -11,6 +11,8 @@ public class Turret : MonoBehaviour
     bool targetInRange = false;
     private float timer = 0;
 
+    private string fireSound = "TurretFires";
+
     void Update()
     {
         //abstraction
@@ -40,8 +42,12 @@ public class Turret : MonoBehaviour
     }
     void Fire()
     {
-        if(targetInRange)
+        if (targetInRange)
+        {
             Instantiate(projectile, firePoint.position, firePoint.rotation);
+            AudioManager.Instance.Play(fireSound);
+        }
+            
     }
     private void OnDrawGizmosSelected()
     {

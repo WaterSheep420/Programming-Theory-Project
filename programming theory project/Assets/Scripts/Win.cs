@@ -17,10 +17,11 @@ public class Win : MonoBehaviour
 
     IEnumerator CloseGame()
     {
+        AudioManager.Instance.Play("Fireworks");
+
         yield return new WaitForSeconds(timeUntilByeBye);
 
         Application.Quit();
-
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #endif

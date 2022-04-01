@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     private Rigidbody2D rb;
 
+    private string jumpSound = "PlayerJumps";
     private float horizontalInput;
     private bool jumpKeyPressed;
 
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        AudioManager.Instance.Play(jumpSound);
     }
     private bool Canjump()
     {

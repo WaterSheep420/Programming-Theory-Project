@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int weaponDamage;
 
     private float timer;
+    private string fireSound = "WeaponFires";
 
     void Update()
     {
@@ -21,6 +22,7 @@ public class Weapon : MonoBehaviour
         if (timer >= 1 / fireRate)
         {
             Instantiate(bullet, firePoint.position, firePoint.rotation);
+            AudioManager.Instance.Play(fireSound);
             timer = 0;
         }
     }

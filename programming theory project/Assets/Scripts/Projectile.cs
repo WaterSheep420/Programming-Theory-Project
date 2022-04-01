@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private string targetTag;
     [SerializeField] private string ignoreTag;
     private string bulletTag = "Bullet";
+    private string hitSound = "ProjectileHit";
 
     [Header("values")]
     [SerializeField] private float speed;
@@ -38,6 +39,8 @@ public class Projectile : MonoBehaviour
         {
             Instantiate(hitParticles, transform.position, transform.rotation);
             Destroy(gameObject);
+
+            AudioManager.Instance.Play(hitSound);
         }
     }
     IEnumerator SelfDestruct()
